@@ -62,3 +62,10 @@
 - Actions Variables set to project URL and publishable key. No service-role key in repo/client. Build and adapter/Python tests all passed.
 - Outstanding: secure admin invitation/first sign-in requires Lucas's target email; no weak/default credential. No data import or Hostinger domain setup.
 - Post-audit documentation commit `03b324c3586a89b48f14f88eb603fe243831eae9` is now on remote `main`; its Pages workflow run `43027403131` completed build and deploy successfully. Public URL probe: HTTP 200; local and remote SHA match. Supabase migration list confirms initial migration; dry-run remains up-to-date.
+
+## 2026-11-11 — First application users authorized
+
+- Read-only check in the linked Supabase project found both owner-created users confirmed and not banned; both had recent successful Supabase Auth sign-ins. Neither had an app profile or active role, explaining why app login returned “account has not received access.” Passwords were not read, tested, changed, or stored.
+- Granted the two requested Auth user IDs the existing `admin` role and created display profiles (`Lucas`, `Sheila`) in one DB transaction.
+- Read-back verified both requested accounts have confirmed email, active admin role, and profile. No participant/attendance records changed.
+- Next: refresh the app and sign in with either existing account; test functionality without sending credentials through chat/tools. Recommend rotating passwords that were shared in chat after login.

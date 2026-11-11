@@ -65,3 +65,9 @@
 - Installed Supabase JS SDK. Production Vite build passed; adapter tests 8/8 and Python tests 26/26 passed.
 - Pages workflow and env example prepared; Pages not enabled/deployed. Production Actions Variables are still missing.
 - Login tab was opened but login completion has not been confirmed. No auth secret or participant data was put into Git.
+## 2026-11-11 — Grant application access to initial users
+
+- Root cause: both Supabase Auth users were confirmed, unbanned, and had successful Auth sign-ins, but had no app profile or active admin role; app correctly denied access after authentication.
+- Added active `admin` role rows and display profiles for the two requested owner-created users in one transaction.
+- Verified both rows by read-back. No password read/change, no participant data change.
+- User can refresh the Pages app and sign in. Recommend rotating chat-shared credentials after access is restored.

@@ -71,3 +71,8 @@ Verification on 2026-11-07: two isolated Python API regression tests pass; `pyth
 - Public GitHub Actions variables contain project URL and publishable client key only; do not use secret/service-role key in static bundle.
 - Vite build, 8 Supabase adapter tests and 26 Python tests passed.
 - Remaining: create/invite admin using Lucas-provided email and test real auth/data flow. Do not create weak test account. Custom Hostinger domain and local data import not done.
+
+## 2026-11-11 — First app users enabled
+- The two user-created Supabase Auth accounts were confirmed and had recent Auth sign-ins, but lacked `private.app_user_roles` and `public.app_profiles`; Supabase authentication therefore succeeded while the app correctly rejected access.
+- Granted the two requested users active admin roles and profiles in one transaction. Read-back confirms both confirmed users now have active `admin` and display profiles. Passwords were not read/set/revealed.
+- No attendance/participant data was modified. Resume by refreshing Pages and using the user's own credentials directly in the browser. Do not ask them to post passwords in chat; rotate the shared credentials after entry.
