@@ -29,18 +29,18 @@ jobs:
         run: npm ci
       - name: Test Supabase adapter
         run: node --test web/src/supabaseApi.test.js
-      - name: Build frontend
-        run: npm run build
-        env:
-          VITE_BASE_PATH: /${{ github.event.repository.name }}/
-          VITE_BACKEND: supabase
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
       - name: Validate production Supabase config
         run: |
           test -n "$VITE_SUPABASE_URL" || (echo 'Missing VITE_SUPABASE_URL' >&2; exit 1)
           test -n "$VITE_SUPABASE_PUBLISHABLE_KEY" || (echo 'Missing VITE_SUPABASE_PUBLISHABLE_KEY' >&2; exit 1)
         env:
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
+      - name: Build frontend
+        run: npm run build
+        env:
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
+          VITE_BACKEND: supabase
           VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
           VITE_SUPABASE_PUBLISHABLE_KEY: ${{ vars.VITE_SUPABASE_PUBLISHABLE_KEY }}
       - name: Upload Pages artifact
