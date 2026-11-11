@@ -57,3 +57,7 @@
 - The CLI sees organization `Grupo Se Toque` and healthy project `Presença` (`rixniksfvpfequvmimbe`, `sa-east-1`). It has not been linked; no migration/data write performed. Confirm this is Sheila's intended account/project.
 - No URL or publishable key configured as repository Actions Variables; workflow will fail-fast until Lucas supplies or authorizes setting them via CLI.
 - Build and tests pass locally: Vite build, 8 JS adapter tests, 26 Python tests.
+- Confirmed organization `Grupo Se Toque` and project `Presença`; linked ref `rixniksfvpfequvmimbe`. Dry-run showed only initial migration; applied and verified remote history plus clean subsequent dry-run. Remote lint reports no schema errors and operational tables have no records.
+- GitHub source visibility was changed to public only after explicit user approval. Pages Actions enabled; latest successful run returned HTTP 200 at the public Pages URL. Local and remote `main` matched at release SHA `4f05c59e989fb8923e959b4e7105c7fb5f472258`.
+- Actions Variables set to project URL and publishable key. No service-role key in repo/client. Build and adapter/Python tests all passed.
+- Outstanding: secure admin invitation/first sign-in requires Lucas's target email; no weak/default credential. No data import or Hostinger domain setup.

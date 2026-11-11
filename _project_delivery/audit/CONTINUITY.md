@@ -62,3 +62,12 @@ Verification on 2026-11-07: two isolated Python API regression tests pass; `pyth
 - Interactive CLI login has not been confirmed. JSON-mode shell attempts fail with NonInteractiveError; a separate Windows Terminal tab “Supabase CLI Se Toque Login” is open. Complete `supabase login --name presenca-setoque` there and verify org listing. Do not paste token in chat.
 - Pages config prepared but not enabled/deployed; URL and publishable key must be set as repo Actions Variables. Do not use service-role key in client. No test login created.
 - Git stage review excludes local database/workbook, backups, QA snapshots and local launcher. `git diff --cached --check` only flags trailing blank line in existing `web/src/style.css`; no spaces/tabs issue. Workflow was linted by patch tool, but its deployment config should be inspected before commit.
+
+## 2026-11-11 — Live backend and Pages rollout
+- Confirmed CLI organization `Grupo Se Toque` and target `Presença`, ref `rixniksfvpfequvmimbe`, region São Paulo, healthy. User authorized using it.
+- Linked local project. Dry-run showed only `20261110000100_initial_schema.sql`; applied successfully. Remote migration list confirms it and next dry-run is up-to-date. `supabase db lint` reported no schema errors.
+- Remote table stats: participants, meetings, attendance, roles and profiles estimated at zero rows. No local records or images transferred.
+- Private GitHub repository was made public only after Lucas explicitly authorized publication of the source. Pages configured via Actions; public site URL `https://lucasvdlk10.github.io/presenca-setoque/` returned HTTP 200. Workflow `43026735939` succeeded. Remote `main` SHA equals local HEAD `4f05c59e989fb8923e959b4e7105c7fb5f472258`.
+- Public GitHub Actions variables contain project URL and publishable client key only; do not use secret/service-role key in static bundle.
+- Vite build, 8 Supabase adapter tests and 26 Python tests passed.
+- Remaining: create/invite admin using Lucas-provided email and test real auth/data flow. Do not create weak test account. Custom Hostinger domain and local data import not done.

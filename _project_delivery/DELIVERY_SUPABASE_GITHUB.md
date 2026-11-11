@@ -13,6 +13,16 @@ Local frontend and Supabase adapter/migration are prepared. Supabase CLI authent
 - Project is not linked (`Cannot find project ref`); migration not applied. Login name `presenca-setoque` has not been independently verified as completed; an interactive Windows Terminal tab is open. Complete `supabase login --name presenca-setoque` in that tab, then verify project/org listing.
 - Pages not enabled or deployed. Configure the two public frontend variables and validate the workflow before pushing. Never include participant records or privileged Supabase key in the static site.
 
+## Remote rollout and publication — verified 2026-11-11
+
+- Project owner authorized: CLI organization is `Grupo Se Toque`; target `Presença`, ref `rixniksfvpfequvmimbe`, region `sa-east-1`, healthy.
+- Linked the local Supabase project, dry-run showed only the intended initial migration, applied it, confirmed migration `20261110000100` in remote history and a subsequent dry-run returned up-to-date.
+- Remote SQL lint: no schema errors. Table stats show 0 estimated records for participants, meetings, attendance, private admin roles and profiles. No participant data imported.
+- User explicitly authorized public source to permit Pages under current plan. Repo made public, Pages enabled with Actions. Initial failed workflow due unset variables; configured public URL/publishable key; fixed validation ordering and reran workflow successfully.
+- Public Pages URL returned HTTP 200. GitHub main SHA matched local HEAD `4f05c59e989fb8923e959b4e7105c7fb5f472258` at verification.
+- Tests/build before release: Vite build passed, adapter tests 8/8, Python suite 26/26.
+- Remaining: invite/bootstrap a real admin (needs Lucas's chosen email); exercise public site's auth/data flows. No test user/weak password, Hostinger custom domain or local data migration performed.
+
 ## Local source prep
 
 - Canonical root: `C:\Users\Lucas\Desktop\Sistema de Presença`.
