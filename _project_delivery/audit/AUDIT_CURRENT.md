@@ -50,24 +50,10 @@
 - Restore-point request before SDK installation was rejected because Windows has a restore point within the last 1,440 minutes; a read-back confirmed the requested point was not created. No SDK installation, policy modification, or system change occurred.
 - Supabase CLI profile file is present with public endpoint settings only. A separate PowerShell login window is open for the new profile; no PAT was entered, no Supabase account was authenticated, and no project was created.
 - App test account remains blocked on the missing email; no default/weak password was created. No Git repository, push, Pages publication, Hostinger change, Supabase migration, or data import has occurred.
-## 2026-11-11 — Current integration audit
+## 2026-11-11 — final release state
 
-### Verified local
-
-- Private GitHub repo `Lucasvdlk10/presenca-setoque` exists; 29 application/config files are staged locally. No commit or push yet.
-- SDK installed. Vite production build passed. Adapter tests: 8 passed. Python API/schema suite: 26 passed.
-- Staged review excludes SQLite database, workbook, backups, QA snapshots, local launcher and server scripts.
-
-### Verified remote
-
-- Supabase org list: `Grupo Se Toque`; project `Presença`, ref `rixniksfvpfequvmimbe`, `sa-east-1`, `ACTIVE_HEALTHY`.
-- The project is not linked to local CLI; only repo Actions permission is enabled. GitHub Pages endpoint returns 404 (not provisioned); no deploy.
-- Sheila's account ownership not proven. No migration or remote write. Do not apply schema until user confirms account/project target and migration dry-run matches expected safe state.
-
-### Remaining
-
-- Verify Supabase login in visible interactive CLI tab; enumerate org and confirm Sheila ownership.
-- Confirm project `Presença` is the desired existing one, inspect remote schema, link, dry-run.
-- Verify workflow (Pages deploy job depends on build; secrets/vars available), commit and push only after final review.
-- Add Actions Variables for project URL and publishable key; enable Pages; confirm public site URL.
-- Bootstrap admin by invite; do not create weak password or use service-role in frontend.
+- Public GitHub source was explicitly authorized by Lucas after GitHub rejected Pages on the private repo tier. Repo visibility now public, Pages configured with Actions, branch `main` pushed (current deployed source SHA to verify via API).
+- The first two Actions runs failed because validation followed the build and variables were absent. Workflow was corrected so validation runs before build; a new successful Actions build/deploy and HTTP check is still required.
+- The CLI sees organization `Grupo Se Toque` and healthy project `Presença` (`rixniksfvpfequvmimbe`, `sa-east-1`). It has not been linked; no migration/data write performed. Confirm this is Sheila's intended account/project.
+- No URL or publishable key configured as repository Actions Variables; workflow will fail-fast until Lucas supplies or authorizes setting them via CLI.
+- Build and tests pass locally: Vite build, 8 JS adapter tests, 26 Python tests.
